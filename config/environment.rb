@@ -1,12 +1,6 @@
-require 'bundler/setup'
-require_relative '../models/Item.rb'
-require_relative '../models/Sale.rb'
-require_relative '../models/User.rb'
-require_relative '../db/migrate/items.rb'
-require_relative '../db/migrate/sales.rb'
-require_relative '../db/migrate/users.rb'
+Bundler.require # <- Require everything in Gemfile
 
-Bundler.require
+require_all 'app' # <- Require everything in the app folder
 
 ENV['SINATRA_ENV'] ||= "jlhWorkshop"
 

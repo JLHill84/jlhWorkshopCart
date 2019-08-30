@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <style>
+        
+            img.resize {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            .parent {
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-flow: row wrap;
+                align-content: stretch;
+                height: 600px;
+
+            }
+
+            div.column1 {
+                width: 400px;
+                margin-left: 20px;
+            }
+
+            div.column2 {
+                width: 400px;
+                margin-right: 20px;
+                align-items: right;
+            }
+        
+        </style>
+
+        <body>
+            
+            <section class='parent'>
+                <% @counter = 0 %>
+                <% columnNum = 1 %>
+                
+                <% @items.each do |item| %>
+                    <% if @counter.odd? %>
+                        <% columnNum = 1 %>
+                    <% elsif @counter.even? %>
+                        <% columnNum = 2 %>
+                    <% end %>
+
+                    <% @counter += 1 %>
+
+                        <div class="column<%= columnNum %>">
+                            <img class="resize" src="<%= item.imgURL %>">
+                            <h1><%= item.itemName %></h1>
+                            <h3><%= item.desc %></h3>
+                            <h5>$<%= item.price %></h5>
+                            
+                            <form action="" method='post'>
+                                <input type="submit" value="Add to Cart" name="<%= item.itemName %>"><br><br>
+                            </form>
+
+                        </div>
+                <% end %>
+            </section>
+
+        </body>
+
+    </head>
+
+</html>
